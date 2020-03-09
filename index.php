@@ -10,14 +10,14 @@ $alfabeto = array_merge($alfabeto,$especiais);
 $texto = $array_dados["cifrado"];
  $caracter_minusculo = strtolower($texto); //cada letra vira minuscula
  $quebra_palavra = str_split($texto); //cada letra ocupa uma posicao de um array
-$array_dados['decifrado'] = " ";
+$array_dados['decifrado'] = "";
 
 //Agora preciso deslocar!
 //para isso preciso do indice de cada letra e diminuir o numero de casas
 
 $nova_letra_alfa="";
 foreach($quebra_palavra as $letra){
-    $new_texto = " ";
+    $new_texto = "";
      if (in_array($letra,$alfabeto)) {
         $posicao_letra_noalfabeto = array_search($letra,$alfabeto); //vai retornar o indice de cada letra.
             if($posicao_letra_noalfabeto !=26 && $posicao_letra_noalfabeto != 27 && $posicao_letra_noalfabeto != 28){
@@ -39,6 +39,7 @@ file_put_contents('answer.json',json_encode($array_dados));
 $resumo = sha1($array_dados['decifrado']);
 $array_dados["resumo_criptografico"] = $resumo;
 file_put_contents('answer.json',json_encode($array_dados));
+// die('oi');
 //action="https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=bec9021803937ab0eae8b1740beb13751546c41c"
 ?>
 
